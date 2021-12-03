@@ -5,7 +5,7 @@ var textNumber = text.map(x => parseInt(x))
 
 
 console.log("Result: " + Day1Part1(textNumber))
-console.log("Part 2 Result" + Day1Part2(textNumber))
+console.log("Part 2 Result: " + Day1Part2(textNumber))
 
 function Day1Part1(input) {
 
@@ -30,19 +30,21 @@ function Day1Part2(input) {
 
     var inc = 0
 
-    for(let i = 2; i < input.length-2; i++){
+    const reducer = (previousValue, currentValue) => previousValue + currentValue
 
-       SumASlice = input.slice(i-2,i)
-       SumA = SumASlice.reduce()
-       SumBSlice = input.slice(i-1, i+1)
-       SumB = SumBSlice.reduce()
+    for(let i = 2; i < input.length; i++){
 
-       if(SumA === SumB) {
-        continue;
-       }
-       else if(SumA < SumB) {
+       SumASlice = input.slice(i-2, i+1)
+       SumA = SumASlice.reduce(reducer)
+
+       SumBSlice = input.slice(i-1,i+2)
+       SumB = SumBSlice.reduce(reducer)
+
+       if(SumA < SumB) {
            inc++
        }
 
     }
+
+    return inc;
 }
