@@ -34,13 +34,13 @@ function Day1Part2(input) {
 
     for(let i = 2; i < input.length; i++){
 
-       SumASlice = input.slice(i-2, i+1)
-       SumA = SumASlice.reduce(reducer)
+       sumASlice = input.slice(i-2, i+1)
+       sumA = sumASlice.reduce(reducer)
 
-       SumBSlice = input.slice(i-1,i+2)
-       SumB = SumBSlice.reduce(reducer)
+       sumBSlice = input.slice(i-1,i+2)
+       sumB = sumBSlice.reduce(reducer)
 
-       if(SumA < SumB) {
+       if(sumA < sumB) {
            inc++
        }
 
